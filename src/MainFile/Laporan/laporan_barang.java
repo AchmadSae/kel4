@@ -425,7 +425,7 @@ public class laporan_barang extends javax.swing.JInternalFrame {
                 Statement stat = Conn.createStatement();
                 
                 try{
-                    String report = "C:\\Users\\USER\\OneDrive\\Documents\\NetBeansProjects\\Kel4\\Kel4\\src\\report\\laporan_barang.jrxml";
+                    String report = "A:\\temporary_project\\NetBeansProjects\\Kel4\\Kel4\\src\\report\\laporan_barang.jrxml";
 //                    HashMap hs = new HashMap();
 //                    //menggambil parameter
 ////                    hs.put("id_biaya", id_biaya.getText());

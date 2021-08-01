@@ -640,7 +640,7 @@ public class invoice_maintenance extends javax.swing.JInternalFrame {
                 Statement stat = Conn.createStatement();
                 
                 try{
-                    String report = "C:\\Users\\USER\\OneDrive\\Documents\\NetBeansProjects\\Kel4\\Kel4\\src\\report\\report1.jrxml";
+                    String report = "A:\\temporary_project\\NetBeansProjects\\Kel4\\Kel4\\src\\report\\report1.jrxml";
                     HashMap hs = new HashMap();
                     //menggambil parameter
                     hs.put("invoice", invoice.getText());

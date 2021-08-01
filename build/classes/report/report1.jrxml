@@ -24,15 +24,15 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="123" y="26" width="187" height="28"/>
+				<reportElement x="123" y="26" width="235" height="28"/>
 				<textElement>
 					<font size="18" isBold="true"/>
 				</textElement>
-				<text><![CDATA[STRUK PENAGIHAN]]></text>
+				<text><![CDATA[INVOICE MAINTENANCE]]></text>
 			</staticText>
 			<image>
-				<reportElement x="23" y="4" width="68" height="63"/>
-				<imageExpression><![CDATA["C:\\Users\\USER\\OneDrive\\Documents\\NetBeansProjects\\Kel4\\Kel4\\src\\image\\icons8-get-cash-50.png"]]></imageExpression>
+				<reportElement x="15" y="16" width="50" height="50"/>
+				<imageExpression><![CDATA["A:\\temporary_project\\NetBeansProjects\\Kel4\\Kel4\\src\\image\\icons8-get-cash-50.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

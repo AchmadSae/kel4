@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import MainFile.pelayanan.maintanance;
 import MainFile.pelayanan.instalasi;
+import MainFile.pelayanan.pemutusan;
 import java.sql.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -359,6 +360,12 @@ public class MenuUtama extends javax.swing.JFrame {
             
             break;
             case "PEMUTUSAN":
+            background.removeAll();
+            background.repaint();
+            
+            pemutusan n2 = new pemutusan();
+            background.add(n2);
+            n2.setVisible(true);
 
             break;
 

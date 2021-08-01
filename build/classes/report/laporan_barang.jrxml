@@ -47,8 +47,8 @@
 				<text><![CDATA[" Barang Masuk Baru di Insert dengan mengubah data barang tersebut "]]></text>
 			</staticText>
 			<image>
-				<reportElement x="0" y="12" width="88" height="72"/>
-				<imageExpression><![CDATA["C:\\Users\\USER\\OneDrive\\Documents\\NetBeansProjects\\Kel4\\Kel4\\src\\image\\book.png"]]></imageExpression>
+				<reportElement x="1" y="12" width="50" height="50"/>
+				<imageExpression><![CDATA["A:\\temporary_project\\NetBeansProjects\\Kel4\\Kel4\\src\\image\\book.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
