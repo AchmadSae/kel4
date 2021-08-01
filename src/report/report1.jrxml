@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invocie" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="invoice" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM db_invoice_maintenance where invoice = $P{invoice}]]>
+	</queryString>
+	<field name="invoice" class="java.lang.String"/>
+	<field name="tgl_tempo" class="java.sql.Date"/>
+	<field name="alamat" class="java.lang.String"/>
+	<field name="nama" class="java.lang.String"/>
+	<field name="pesan" class="java.lang.String"/>
+	<field name="kunjungan" class="java.lang.String"/>
+	<field name="biaya_kunjungan" class="java.lang.Integer"/>
+	<field name="spare_part" class="java.lang.String"/>
+	<field name="biaya_sparePart" class="java.lang.Integer"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="total_biaya" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="123" y="26" width="187" height="28"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STRUK PENAGIHAN]]></text>
+			</staticText>
+			<image>
+				<reportElement x="23" y="4" width="68" height="63"/>
+				<imageExpression><![CDATA["C:\\Users\\USER\\OneDrive\\Documents\\NetBeansProjects\\Kel4\\Kel4\\src\\image\\icons8-get-cash-50.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="358" y="0" width="195" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Biaya Yang di Bebankan          = ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="582" y="0" width="141" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{total_biaya}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="35" y="41" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{invoice}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INVOICE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA PEMILIK]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="210" y="41" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="157" splitType="Stretch">
+			<line>
+				<reportElement x="35" y="13" width="688" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="35" y="62" width="300" height="87"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{kunjungan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="14" width="135" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rincian Pekerjaan  =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="13" width="135" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rincian Spare Part =]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="358" y="54" width="365" height="95"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{spare_part}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement x="35" y="28" width="68" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOTE     =]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="123" y="28" width="600" height="49"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pesan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>
