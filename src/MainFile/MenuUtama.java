@@ -5,7 +5,14 @@
  */
 package MainFile;
 import MainFile.Laporan.laporan_barang;
+import MainFile.Laporan.laporan_maintenance;
+import MainFile.Laporan.laporan_instalasi;
+import MainFile.Laporan.laporan_pemutusan;
+import MainFile.Laporan.laporan_pelanggan;
 import MainFile.master.pelanggan;
+import MainFile.master.karyawan;
+import MainFile.master.prosedur_eskalasi;
+import MainFile.master.fasilitas;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import MainFile.pelayanan.maintanance;
@@ -28,6 +35,7 @@ public class MenuUtama extends javax.swing.JFrame {
             invoice_maintenance inMaint;
             //invoice_instalasi inIns;
             //invoice_pemutusan insP;
+            laporan_maintenance lapMaintenance;
 //    Fasilitas Fasilitas;  
 //    Pendaftaran Pendaftaran;
 //    
@@ -90,7 +98,6 @@ public class MenuUtama extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         transaksi = new javax.swing.JLabel();
         laporan = new javax.swing.JComboBox<>();
-        jCtransaksi = new javax.swing.JComboBox<>();
         background = new javax.swing.JDesktopPane();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -107,15 +114,15 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("LAPORAN");
+        jLabel1.setText("LAPORAN :");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("DATA MASTER");
+        jLabel2.setText("DATA MASTER :");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("PELAYANAN");
+        jLabel3.setText("PELAYANAN :");
 
         master.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         master.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "PROSEDUR ESKALASI", "FASILITAS", "KARYAWAN", "PELANGGAN" }));
@@ -152,19 +159,11 @@ public class MenuUtama extends javax.swing.JFrame {
         });
 
         laporan.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        laporan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "LAPORAN INSTALASI", "LAPORAN MAINTANANCE", "LAPORAN PEMUTUSAN", "LAPORAN BARANG", "LAPORAN PELANGGAN" }));
+        laporan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "LAPORAN INSTALASI", "LAPORAN MAINTENANCE", "LAPORAN PEMUTUSAN", "LAPORAN BARANG", "LAPORAN PELANGGAN" }));
         laporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         laporan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 laporanActionPerformed(evt);
-            }
-        });
-
-        jCtransaksi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "TRANSAKSI INSTALASI", "TRANSAKSI MAINTENANCE", "TRANSAKSI PEMUTUSAN" }));
-        jCtransaksi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCtransaksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCtransaksiActionPerformed(evt);
             }
         });
 
@@ -181,11 +180,11 @@ public class MenuUtama extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(laporan, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(pelayanan, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(master, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(transaksi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(transaksi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -194,10 +193,6 @@ public class MenuUtama extends javax.swing.JFrame {
                         .addGap(0, 10, Short.MAX_VALUE)
                         .addComponent(jLabel8)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jCtransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,15 +206,13 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pelayanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(transaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(jCtransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(laporan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
@@ -287,7 +280,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 background.removeAll();
                 background.repaint();
 
-                instalasi n1 = new instalasi();
+                laporan_instalasi n1 = new laporan_instalasi();
                 background.add(n1);
                 n1.setVisible(true);
             
@@ -297,7 +290,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 background.removeAll();
                 background.repaint();    
 
-                maintanance n2 = new maintanance();
+                laporan_maintenance n2 = new laporan_maintenance();
                 background.add(n2);
                 n2.setVisible(true);
             
@@ -307,7 +300,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 background.removeAll();
                 background.repaint();    
 
-                maintanance n3 = new maintanance();
+                laporan_pemutusan n3 = new laporan_pemutusan();
                 background.add(n3);
                 n3.setVisible(true);
             
@@ -321,12 +314,12 @@ public class MenuUtama extends javax.swing.JFrame {
                 n4.setVisible(true);
             break;
             case "LAPORAN PELANGGAN":
-//                background.removeAll();
-//                background.repaint();    
-//
-//                pelanggan n5 = new pelanggan();
-//                background.add(n4);
-//                n4.setVisible(true);
+                background.removeAll();
+                background.repaint();    
+
+                laporan_pelanggan n5 = new laporan_pelanggan();
+                background.add(n5);
+                n5.setVisible(true);
             break;
         }
     }//GEN-LAST:event_laporanActionPerformed
@@ -374,7 +367,12 @@ public class MenuUtama extends javax.swing.JFrame {
     }//GEN-LAST:event_pelayananActionPerformed
 
     private void transaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transaksiMouseClicked
-          
+            background.removeAll();
+            background.repaint();    
+                
+            invoice_maintenance n2 = new invoice_maintenance();
+            background.add(n2);
+            n2.setVisible(true);
             
     }//GEN-LAST:event_transaksiMouseClicked
 
@@ -384,28 +382,28 @@ public class MenuUtama extends javax.swing.JFrame {
 
         switch(pilih){
             case "PROSEDUR ESKALASI" :
-//                background.removeAll();
-//                background.repaint();
-//
-//                instalasi n = new instalasi();
-//                background.add(n);
-//                n.setVisible(true);
+                background.removeAll();
+                background.repaint();
+
+                prosedur_eskalasi n = new prosedur_eskalasi();
+                background.add(n);
+                n.setVisible(true);
             break;
             case "FASILITAS" :
-//                background.removeAll();
-//                background.repaint();
-//
-//                instalasi n = new instalasi();
-//                background.add(n);
-//                n.setVisible(true);
+                background.removeAll();
+                background.repaint();
+
+                fasilitas n1 = new fasilitas();
+                background.add(n1);
+                n1.setVisible(true);
             break;
             case "KARYAWAN" :
-//                background.removeAll();
-//                background.repaint();
-//
-//                instalasi n = new instalasi();
-//                background.add(n);
-//                n.setVisible(true);
+                background.removeAll();
+                background.repaint();
+
+                karyawan n3 = new karyawan();
+                background.add(n3);
+                n3.setVisible(true);
             break;
             case "PELANGGAN" :
                 background.removeAll();
@@ -417,39 +415,6 @@ public class MenuUtama extends javax.swing.JFrame {
             break;
         }
     }//GEN-LAST:event_masterActionPerformed
-
-    private void jCtransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCtransaksiActionPerformed
-         String pilih = jCtransaksi.getSelectedItem().toString();
-
-        switch(pilih){
-            case "TRANSAKSI INSTALASI" :
-//            background.removeAll();
-//            background.repaint();
-//                
-//            instalasi n1 = new instalasi();
-//            background.add(n1);
-//            n1.setVisible(true);
-            
-      
-
-            break;
-            case "TRANSAKSI MAINTENANCE" :
-            background.removeAll();
-            background.repaint();    
-                
-            invoice_maintenance n2 = new invoice_maintenance();
-            background.add(n2);
-            n2.setVisible(true);
-            
-            
-            
-            break;
-            case "TRANSAKSI PEMUTUSAN":
-
-            break;
-
-        }
-    }//GEN-LAST:event_jCtransaksiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -489,7 +454,6 @@ public class MenuUtama extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane background;
-    private javax.swing.JComboBox<String> jCtransaksi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

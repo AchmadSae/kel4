@@ -102,6 +102,9 @@ public class instalasi extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 255));
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setPreferredSize(new java.awt.Dimension(1200, 800));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));

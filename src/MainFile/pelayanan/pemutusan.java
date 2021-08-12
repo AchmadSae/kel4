@@ -121,7 +121,7 @@ public class pemutusan extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -140,6 +140,12 @@ public class pemutusan extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nama Pemilik");
+
+        id_pelanggan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                id_pelangganKeyPressed(evt);
+            }
+        });
 
         keterangan.setColumns(20);
         keterangan.setRows(5);
@@ -283,6 +289,7 @@ public class pemutusan extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -319,7 +326,7 @@ public class pemutusan extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JScroolTable, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         pack();
@@ -343,7 +350,7 @@ public class pemutusan extends javax.swing.JInternalFrame {
 
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data akan disimpan");
-            clear();
+            
             id_pelanggan.requestFocus();
             tableM();
         }
@@ -351,6 +358,24 @@ public class pemutusan extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Data gagal disimpan"+e);
             tableM();
         }
+        
+        //menghapus data pelanggan setelah terjadi pemutusan
+         int ok = JOptionPane.showConfirmDialog(null,"Hapus data ini?","Konfirmasi",JOptionPane.YES_NO_OPTION);
+         if (ok==0){
+             String sql1 = "delete from db_pelanggan where id_pelanggan ='"+id_pelanggan.getText()+"'";
+             try{
+                PreparedStatement stat = Conn.prepareStatement(sql1);
+                stat.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Data akan di hapus dari sistem?");
+                clear();
+                id_pelanggan.requestFocus();
+             }
+                catch (SQLException e){
+                JOptionPane.showMessageDialog(null, "data gagal dihapus"+e);
+             }
+         tableM();
+         clear();
+         }
     }//GEN-LAST:event_simpanActionPerformed
 
     private void ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubahActionPerformed
@@ -433,6 +458,13 @@ public class pemutusan extends javax.swing.JInternalFrame {
     private void keteranganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_keteranganMouseClicked
         JOptionPane.showMessageDialog(null, " <FORMAT> = - nama spaer part , [ banyak  nya ] list selanjutnya harus di bawah nya !!");
     }//GEN-LAST:event_keteranganMouseClicked
+
+    private void id_pelangganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_id_pelangganKeyPressed
+        // auto select data from database pelanggan
+        
+        
+        String sql ="Select * from db_pelanggan where id_pelanggan like '%" + id_pelanggan.getText() + "%'";
+    }//GEN-LAST:event_id_pelangganKeyPressed
 
     void setExtendedState(int MAXIMIZED_BOTH) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
